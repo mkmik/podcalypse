@@ -1,0 +1,61 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: podcalypse
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: podcalypse
+  namespace: podcalypse
+spec:
+  selector:
+    matchLabels:
+      name: podcalypse
+  template:
+    metadata:
+      labels:
+        name: podcalypse
+    spec:
+      containers:
+      - name: controller
+        image: "ko://github.com/mkmik/podcalypse"
+        env:
+        - name: PODCALYPSE_RATE
+          value: "0.2"
+        - name: PODCALYPSE_MIN
+          value: "4"
+        ports:
+        - name: http
+          containerPort: 8080
+      serviceAccountName: podcalypse
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  annotations: {}
+  name: podcalypse
+  namespace: podcalypse
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: podcalypse
+rules:
+- apiGroups: [""]
+  resources:
+  - pods
+  verbs: ["list", "delete"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: podcalypse
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: podcalypse
+subjects:
+- kind: ServiceAccount
+  name: podcalypse
+  namespace: podcalypse
