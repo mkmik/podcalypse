@@ -7,7 +7,7 @@ require (
 	golang.org/x/time v0.0.0-20220722155302-e5dcc9cfc0b9
 	k8s.io/api v0.25.0
 	k8s.io/apimachinery v0.25.0
-	k8s.io/client-go v0.25.0
+	k8s.io/client-go v11.0.0+incompatible
 	k8s.io/klog/v2 v2.70.1
 	k8s.io/kubectl v0.25.0
 	sigs.k8s.io/controller-runtime v0.12.3
