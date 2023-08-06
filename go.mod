@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/bitnami-labs/flagenv v0.1.0
-	golang.org/x/time v0.0.0-20220722155302-e5dcc9cfc0b9
+	golang.org/x/time v0.3.0
 	k8s.io/api v0.25.0
 	k8s.io/apimachinery v0.25.0
 	k8s.io/client-go v0.25.0
