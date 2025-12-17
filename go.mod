@@ -1,10 +1,10 @@
 module github.com/mkmik/podcalypse
 
-go 1.19
+go 1.24.0
 
 require (
 	github.com/bitnami-labs/flagenv v0.1.0
-	golang.org/x/time v0.3.0
+	golang.org/x/time v0.14.0
 	k8s.io/api v0.25.0
 	k8s.io/apimachinery v0.25.0
 	k8s.io/client-go v0.25.0
